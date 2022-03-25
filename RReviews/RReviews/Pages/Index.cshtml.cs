@@ -14,7 +14,6 @@ namespace RReviews.Pages
 
         public void OnGet()
         {
-
         }
     }
 }
