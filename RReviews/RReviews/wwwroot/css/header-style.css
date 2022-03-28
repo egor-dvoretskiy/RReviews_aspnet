@@ -6,6 +6,7 @@
 .navbar-brand {
     text-transform: uppercase;
     line-height: 50px;
+    padding-left: 15px;
 }
 
 #header-nav {
