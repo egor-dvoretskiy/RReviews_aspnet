@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using RReviews.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<RReviewsContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("RReviewsContext")));
 
 var app = builder.Build();
 

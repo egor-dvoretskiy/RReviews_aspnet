@@ -21,11 +21,11 @@ namespace RReviews.Models
 
         public string Content { get; set; } = string.Empty;
 
-        [Range(1, 10)]
-        public int Rating;
+        [Range(0, 10, ErrorMessage = "Allowed rating in 0..10")]
+        public int ReviewRating { get; set; }
 
         [DataType(DataType.ImageUrl)]
-        public object? Img { get; set; } = null;
+        public string? ImgUrl { get; set; }
 
         [Range(0, double.MaxValue, ErrorMessage = "Only positive number allowed")]
         [DataType(DataType.Currency)]
