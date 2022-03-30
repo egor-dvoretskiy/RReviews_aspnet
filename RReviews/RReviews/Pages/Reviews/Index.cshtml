@@ -17,6 +17,9 @@
                 @Html.DisplayNameFor(model => model.Review[0].Title)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Review[0].ObjectName)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Review[0].ReviewTypeObject)
             </th>
             <th>
@@ -39,6 +42,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObjectName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ReviewTypeObject)
