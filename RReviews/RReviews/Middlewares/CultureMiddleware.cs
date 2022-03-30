@@ -23,7 +23,6 @@ namespace RReviews.Middlewares
             {
                 try
                 {
-                    lang = "en - US";
                     CultureInfo.CurrentCulture = new CultureInfo(lang);
                     CultureInfo.CurrentUICulture = new CultureInfo(lang);
                 }

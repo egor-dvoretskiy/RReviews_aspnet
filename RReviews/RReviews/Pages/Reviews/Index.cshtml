@@ -1,4 +1,5 @@
 ﻿@page
+@using RReviews.Enum
 @model RReviews.Pages.Reviews.IndexModel
 
 @{
@@ -6,6 +7,16 @@
 }
 
 <h1>Index</h1>
+
+<form>
+    <p>
+        <select asp-for="ReviewType" asp-items="Model.Types">
+            <option value="">All</option>
+        </select>
+        Name: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 
 <p>
     <a asp-page="Create">Create New</a>
