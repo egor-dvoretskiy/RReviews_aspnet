@@ -17,17 +17,18 @@ namespace RReviews.Models
         public string Title { get; set; } = string.Empty;
 
         [DataType(DataType.Date)]
+        [Column(TypeName = "date")]
         public DateTime TestingDate { get; set; }
 
+        public string ObjectName { get; set; } = string.Empty;
+
+        [DataType(DataType.MultilineText)]
         public string Content { get; set; } = string.Empty;
 
         [Range(0, 10, ErrorMessage = "Allowed rating in 0..10")]
         public int ReviewRating { get; set; }
 
-        [DataType(DataType.ImageUrl)]
-        public string? ImgUrl { get; set; }
-
-        [Range(0, double.MaxValue, ErrorMessage = "Only positive number allowed")]
+        [Range(0.0, double.MaxValue, ErrorMessage = "Value should be positive.")]
         [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Cost { get; set; }

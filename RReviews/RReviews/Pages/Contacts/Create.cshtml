@@ -1,0 +1,53 @@
+﻿@page
+@model RReviews.Pages.Contacts.CreateModel
+
+@{
+    ViewData["Title"] = "Contacts";
+}
+
+<h1>Contacts</h1>
+
+<h4>ContactUsMessage</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <div id="googlemap" style="width:100%; height:600px;"></div>
+    </div>
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ContactUsMessage.FirstName" class="control-label"></label>
+                <input asp-for="ContactUsMessage.FirstName" class="form-control" />
+                <span asp-validation-for="ContactUsMessage.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactUsMessage.LastName" class="control-label"></label>
+                <input asp-for="ContactUsMessage.LastName" class="form-control" />
+                <span asp-validation-for="ContactUsMessage.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactUsMessage.Email" class="control-label"></label>
+                <input asp-for="ContactUsMessage.Email" class="form-control" />
+                <span asp-validation-for="ContactUsMessage.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactUsMessage.PhoneNumber" class="control-label"></label>
+                <input asp-for="ContactUsMessage.PhoneNumber" class="form-control" />
+                <span asp-validation-for="ContactUsMessage.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactUsMessage.AdditionalInformation" class="control-label"></label>
+                <input asp-for="ContactUsMessage.AdditionalInformation" class="form-control" />
+                <span asp-validation-for="ContactUsMessage.AdditionalInformation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

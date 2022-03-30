@@ -1,4 +1,5 @@
 ﻿@page
+@using System.Globalization
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -6,4 +7,6 @@
 
 <div class="text-center">
     <h1 class="display-4">Some random title</h1>
+    <p>Current system culture: @CultureInfo.CurrentCulture.Name</p>
+    <p>Current UI culture: @CultureInfo.CurrentUICulture.Name</p>
 </div>

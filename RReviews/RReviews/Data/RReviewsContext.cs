@@ -16,5 +16,7 @@ namespace RReviews.Data
         }
 
         public DbSet<RReviews.Models.Review> Review { get; set; }
+
+        public DbSet<RReviews.Models.ContactUsMessage> ContactUsMessage { get; set; }
     }
 }
