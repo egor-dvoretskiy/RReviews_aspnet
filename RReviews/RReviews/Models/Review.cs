@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RReviews.Enum;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,7 +14,6 @@ namespace RReviews.Models
         public int Id { get; set; }
 
         [StringLength(60, MinimumLength = 3)]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
         public string Title { get; set; } = string.Empty;
 
         [DataType(DataType.Date)]
@@ -31,5 +31,8 @@ namespace RReviews.Models
         [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Cost { get; set; }
+
+        [EnumDataType(typeof(ReviewObject), ErrorMessage = "Review object doesn't exist within enum")]
+        public ReviewObject ReviewTypeObject { get; set; }
     }
 }
