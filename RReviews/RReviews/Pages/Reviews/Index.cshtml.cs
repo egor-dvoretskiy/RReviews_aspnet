@@ -28,7 +28,7 @@ namespace RReviews.Pages.Reviews
         [BindProperty(SupportsGet = true)]
         public ReviewObject ReviewType { get; set; }
 
-        public IList<Review> Review { get;set; }
+        public IList<ReviewModel> Review { get;set; }
 
         public SelectList Types { get; set; }
 

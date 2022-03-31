@@ -13,10 +13,13 @@ namespace RReviews.Data
         public RReviewsContext (DbContextOptions<RReviewsContext> options)
             : base(options)
         {
+            _ = Database.EnsureCreated();
         }
 
-        public DbSet<RReviews.Models.Review> Review { get; set; }
+        public DbSet<RReviews.Models.ImageModel> Image { get; set; }
 
-        public DbSet<RReviews.Models.ContactUsMessage> ContactUsMessage { get; set; }
+        public DbSet<RReviews.Models.ReviewModel> Review { get; set; }
+
+        public DbSet<RReviews.Models.ContactUsMessageModel> ContactUsMessage { get; set; }
     }
 }

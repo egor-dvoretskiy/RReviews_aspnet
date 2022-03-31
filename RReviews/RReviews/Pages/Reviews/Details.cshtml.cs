@@ -20,7 +20,7 @@ namespace RReviews.Pages.Reviews
             _context = context;
         }
 
-        public Review Review { get; set; }
+        public ReviewModel Review { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

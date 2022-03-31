@@ -14,10 +14,12 @@ namespace RReviews.Pages.Reviews
     public class CreateModel : PageModel
     {
         private readonly RReviews.Data.RReviewsContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public CreateModel(RReviews.Data.RReviewsContext context)
+        public CreateModel(RReviews.Data.RReviewsContext context, IWebHostEnvironment webHostEnvironment)
         {
-            _context = context;
+            this._context = context;
+            this._webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult OnGet()
@@ -26,11 +28,15 @@ namespace RReviews.Pages.Reviews
         }
 
         [BindProperty]
-        public Review Review { get; set; }
+        public ReviewModel Review { get; set; }
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        [BindProperty]
+        public ImageModel Image { get; set; }
+
         public async Task<IActionResult> OnPostAsync()
         {
+            var filename = this.Image.formFile.FileName;
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -39,7 +45,35 @@ namespace RReviews.Pages.Reviews
             _context.Review.Add(Review);
             await _context.SaveChangesAsync();
 
+
             return RedirectToPage("./Index");
+        }
+
+        private async void AddImage(IFormFile image)
+        {
+
+            if (image != null)
+            {
+                Guid guid = Guid.NewGuid();
+
+                string path = @"\img\reviews\";
+                string imagePath = this._webHostEnvironment.WebRootPath + path;
+                string imageExtension = Path.GetExtension(image.Name);
+                string imageName = string.Concat(guid, imageExtension);
+
+                string fullPathToImage = Path.Combine(imagePath, imageName);
+
+                using (FileStream fileStream = new FileStream(fullPathToImage, FileMode.Create))
+                {
+                    await image.CopyToAsync(fileStream);
+                }
+
+                ImageModel imageModel = new ImageModel { Name = guid, Path = fullPathToImage };
+                this.Review.ImageKey = guid;
+
+                _context.Image.Add(imageModel);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

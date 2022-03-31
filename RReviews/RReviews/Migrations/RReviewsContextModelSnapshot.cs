@@ -22,7 +22,7 @@ namespace RReviews.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("RReviews.Models.ContactUsMessage", b =>
+            modelBuilder.Entity("RReviews.Models.ContactUsMessageModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,7 +53,27 @@ namespace RReviews.Migrations
                     b.ToTable("ContactUsMessage");
                 });
 
-            modelBuilder.Entity("RReviews.Models.Review", b =>
+            modelBuilder.Entity("RReviews.Models.ImageModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<Guid>("Name")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Image");
+                });
+
+            modelBuilder.Entity("RReviews.Models.ReviewModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,6 +87,9 @@ namespace RReviews.Migrations
 
                     b.Property<decimal>("Cost")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid?>("ImageKey")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ObjectName")
                         .IsRequired()

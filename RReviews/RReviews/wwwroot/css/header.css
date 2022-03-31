@@ -41,3 +41,16 @@
 #navigation-menu li a:hover {
     background-color: #ffa1d5;
 }
+
+/*-------> RR <---------------*/
+
+#rr {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: red;
+    font-size: 35px;
+    padding: 5px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    display: inline-block;
+}

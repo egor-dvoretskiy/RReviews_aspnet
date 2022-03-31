@@ -21,7 +21,7 @@ namespace RReviews.Pages.Reviews
         }
 
         [BindProperty]
-        public Review Review { get; set; }
+        public ReviewModel Review { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

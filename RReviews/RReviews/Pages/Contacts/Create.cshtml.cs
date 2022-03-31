@@ -26,7 +26,7 @@ namespace RReviews.Pages.Contacts
         }
 
         [BindProperty]
-        public ContactUsMessage ContactUsMessage { get; set; }
+        public ContactUsMessageModel ContactUsMessage { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
