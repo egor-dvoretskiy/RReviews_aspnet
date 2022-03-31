@@ -1,0 +1,17 @@
+﻿.card-footer-custom {
+    
+}
+
+.card-footer-block-2 {
+    float: right;
+}
+
+.card-footer-block-2 a {
+    color: white;
+}
+
+.card-footer-block-1 {
+    float: left;
+    height: 100%;
+    text-align: center;
+}

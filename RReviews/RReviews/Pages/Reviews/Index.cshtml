@@ -21,63 +21,34 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Review[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Review[0].ObjectName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Review[0].ReviewTypeObject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Review[0].TestingDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Review[0].Content)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Review[0].Cost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Review[0].ReviewRating)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Review) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ObjectName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReviewTypeObject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TestingDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReviewRating)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model.Review)
+    {
+        <div class="col">
+            <div class="card">
+                <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.ObjectName)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.ReviewTypeObject)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.TestingDate)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Content)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Cost)</p>
+                </div>
+                <div class="card-footer card-footer-custom">
+                    <div class="card-footer-block-1">
+                        <small class="text-muted">
+                            Рейтинг: @Html.DisplayFor(modelItem => item.ReviewRating)
+                        </small>
+                    </div>
+                    <div class="card-footer-block-2">
+                        <button class="btn btn-info">
+                            <a asp-page="./Details" asp-route-id="@item.Id">Посмотреть</a>
+                        </button>
+                    </div>                    
+                </div>
+             </div>
+        </div>
+    }  
+</div>

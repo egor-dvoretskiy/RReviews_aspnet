@@ -31,25 +31,32 @@
     color: grey;
 }
 
-.button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-}
-
-    .button:hover {
-        background-color: #555;
-    }
-
 @media screen and (max-width: 650px) {
     .column {
         width: 100%;
         display: block;
     }
+}
+
+.contact-btn {
+    border: none;
+    border-radius: 5px;
+    align-content: center;
+    outline: 0;
+    display: inline-block;
+    padding: 6px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: #0094ff;
+    /*font-weight: bold;*/
+    font-size: 18px;
+}
+
+.contact-btn:hover {
+    color: white;
+    background-color: #0026ff;
 }
