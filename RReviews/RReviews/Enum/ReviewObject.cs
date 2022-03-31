@@ -9,6 +9,9 @@ namespace RReviews.Enum
 {
     public enum ReviewObject
     {
+        [Display(Name = "none")]
+        None,
+
         [Display(Name = "etc")]
         Etc,
 

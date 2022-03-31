@@ -22,15 +22,15 @@ namespace RReviews.Pages.Reviews
             _context = context;
         }
 
-        public IList<Review> Review { get;set; }
-
         [BindProperty(SupportsGet = true)]
         public string SearchString { get; set; }
 
-        public SelectList Types { get; set; }
-
         [BindProperty(SupportsGet = true)]
         public ReviewObject ReviewType { get; set; }
+
+        public IList<Review> Review { get;set; }
+
+        public SelectList Types { get; set; }
 
         public async Task OnGetAsync()
         {
@@ -46,10 +46,14 @@ namespace RReviews.Pages.Reviews
                 reviews = reviews.Where(x => x.ObjectName.Contains(this.SearchString));
             }
 
-            reviews = reviews.Where(x => x.ReviewTypeObject == ReviewType);            
+            if (ReviewType != ReviewObject.None)
+            {
+                reviews = reviews.Where(x => x.ReviewTypeObject == ReviewType);
+            }
+           
 
             Types = new SelectList(await typesQuery.Distinct().ToListAsync());
-            Review = await _context.Review.ToListAsync();
+            Review = await reviews.ToListAsync();
         }
     }
 }
