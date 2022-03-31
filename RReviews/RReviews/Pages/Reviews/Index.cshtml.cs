@@ -30,6 +30,8 @@ namespace RReviews.Pages.Reviews
 
         public IList<ReviewModel> Review { get;set; }
 
+        public IList<ImageModel> Image { get; set; }
+
         public SelectList Types { get; set; }
 
         public async Task OnGetAsync()
@@ -37,6 +39,8 @@ namespace RReviews.Pages.Reviews
             IQueryable<ReviewObject> typesQuery = from m in _context.Review
                                             orderby m.ReviewTypeObject
                                             select m.ReviewTypeObject;
+
+            this.Image = await _context.Image.ToListAsync();
 
             var reviews = from m in _context.Review
                           select m;
@@ -49,8 +53,7 @@ namespace RReviews.Pages.Reviews
             if (ReviewType != ReviewObject.None)
             {
                 reviews = reviews.Where(x => x.ReviewTypeObject == ReviewType);
-            }
-           
+            }           
 
             Types = new SelectList(await typesQuery.Distinct().ToListAsync());
             Review = await reviews.ToListAsync();

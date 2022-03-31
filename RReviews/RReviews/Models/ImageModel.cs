@@ -15,8 +15,7 @@ namespace RReviews.Models
         [Required]
         public Guid Name { get; set; }
 
-        [Required]
-        public string Path { get; set; } = string.Empty;
+        public string RelativePath { get; set; } = string.Empty;
 
         [NotMapped]
         public IFormFile? formFile { get; set; }

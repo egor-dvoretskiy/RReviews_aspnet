@@ -35,45 +35,42 @@ namespace RReviews.Pages.Reviews
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var filename = this.Image.formFile.FileName;
-
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Review.Add(Review);
-            await _context.SaveChangesAsync();
-
-
-            return RedirectToPage("./Index");
-        }
-
-        private async void AddImage(IFormFile image)
-        {
-
-            if (image != null)
+            if (this.Image.formFile != null)
             {
                 Guid guid = Guid.NewGuid();
 
-                string path = @"\img\reviews\";
+                var filename = this.Image.formFile.FileName;
+
+                string path = @"/img/reviews/";
                 string imagePath = this._webHostEnvironment.WebRootPath + path;
-                string imageExtension = Path.GetExtension(image.Name);
+                string imageExtension = Path.GetExtension(filename);
                 string imageName = string.Concat(guid, imageExtension);
 
+                string relativePathToImage = Path.Combine(path, imageName);
                 string fullPathToImage = Path.Combine(imagePath, imageName);
 
                 using (FileStream fileStream = new FileStream(fullPathToImage, FileMode.Create))
                 {
-                    await image.CopyToAsync(fileStream);
+                    await this.Image.formFile.CopyToAsync(fileStream);
                 }
 
-                ImageModel imageModel = new ImageModel { Name = guid, Path = fullPathToImage };
+                this.Image.Name = guid;
+                this.Image.RelativePath = relativePathToImage;
+
                 this.Review.ImageKey = guid;
 
-                _context.Image.Add(imageModel);
-                await _context.SaveChangesAsync();
+                _context.Image.Add(this.Image);
             }
+
+            _context.Review.Add(Review);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
         }
     }
 }

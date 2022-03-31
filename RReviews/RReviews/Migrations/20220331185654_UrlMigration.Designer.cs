@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RReviews.Data;
 
@@ -11,9 +12,10 @@ using RReviews.Data;
 namespace RReviews.Migrations
 {
     [DbContext(typeof(RReviewsContext))]
-    partial class RReviewsContextModelSnapshot : ModelSnapshot
+    [Migration("20220331185654_UrlMigration")]
+    partial class UrlMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
