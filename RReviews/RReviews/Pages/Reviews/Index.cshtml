@@ -27,7 +27,7 @@
     {
         <div class="col">
             <div class="card">
-                <img src="@(Model.Image.Where(x => x.Name == item.ImageKey).SingleOrDefault() == null ? @"/img/reviews/default.jpg" : Model.Image.Where(x => x.Name == item.ImageKey).SingleOrDefault().RelativePath)" class="card-img-top"/>
+                <img src="@(Model.Image.Where(x => x.Name == item.ImageKey).SingleOrDefault() == null ? @"/img/reviews/d.jpg" : Model.Image.Where(x => x.Name == item.ImageKey).SingleOrDefault().RelativePath)" class="card-img-top"/>
                 <div class="card-body">
                     <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.ObjectName)</p>

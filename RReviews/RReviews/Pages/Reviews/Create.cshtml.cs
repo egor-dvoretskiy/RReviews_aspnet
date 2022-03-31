@@ -1,6 +1,7 @@
 ﻿#nullable disable
 using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +16,13 @@ namespace RReviews.Pages.Reviews
     {
         private readonly RReviews.Data.RReviewsContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IConfiguration _configuration;
 
-        public CreateModel(RReviews.Data.RReviewsContext context, IWebHostEnvironment webHostEnvironment)
+        public CreateModel(RReviews.Data.RReviewsContext context, IWebHostEnvironment webHostEnvironment, IConfiguration configuration)
         {
             this._context = context;
             this._webHostEnvironment = webHostEnvironment;
+            this._configuration = configuration;
         }
 
         public IActionResult OnGet()
@@ -46,7 +49,8 @@ namespace RReviews.Pages.Reviews
 
                 var filename = this.Image.formFile.FileName;
 
-                string path = @"/img/reviews/";
+                /*string path = @"/img/reviews/";*/
+                string path = this._configuration.GetValue<string>("StaticFiles:Images:RelativePath");
                 string imagePath = this._webHostEnvironment.WebRootPath + path;
                 string imageExtension = Path.GetExtension(filename);
                 string imageName = string.Concat(guid, imageExtension);
