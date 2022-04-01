@@ -16,9 +16,12 @@ namespace RReviews.Pages
     public class GalleryModel : PageModel
     {
         private readonly IWebHostEnvironment webHostEnvironment;
-        public GalleryModel(IWebHostEnvironment webHostEnvironment)
+        private readonly IConfiguration _configuration;
+
+        public GalleryModel(IWebHostEnvironment webHostEnvironment, IConfiguration configuration)
         {
             this.webHostEnvironment = webHostEnvironment;
+            this._configuration = configuration;
         }
 
         [BindProperty]
@@ -26,8 +29,9 @@ namespace RReviews.Pages
 
         public IActionResult OnGetAsync()
         {
-            string pathToStaticFiles = this.webHostEnvironment.WebRootPath;
-            string relativePathToImages = @"\img\reviews\";
+            string pathToStaticFiles = this.webHostEnvironment.WebRootPath;/*
+            string relativePathToImages = @"\img\reviews\";*/
+            string relativePathToImages = this._configuration.GetValue<string>("StaticFiles:Images:RelativePath");
 
             var provider = new PhysicalFileProvider(pathToStaticFiles);
             var contents = provider.GetDirectoryContents(relativePathToImages);

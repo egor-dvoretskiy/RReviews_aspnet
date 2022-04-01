@@ -52,14 +52,10 @@
                 <input asp-for="Review.ReviewRating" class="form-control" />
                 <span asp-validation-for="Review.ReviewRating" class="text-danger"></span>
             </div>
-@*
-            <form action="" method="post" enctype="multipart/form-data">*@
-                <div class="form-group">
-                    <label for="Image" class="control-label">Image</label>
-                    <input type="file" id="reviewImage" class="form-control" asp-for="Image.formFile"/>
-                   @* <input type="submit" value="Upload" class="btn btn-primary" style="float:right"/>*@
-                </div>@*
-            </form>*@
+            <div class="form-group">
+                <label for="Image" class="control-label">Image</label>
+                <input type="file" id="reviewImage" class="form-control" asp-for="Image.formFile"/>
+            </div>
             <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
