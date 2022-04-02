@@ -5,12 +5,12 @@
     ViewData["Title"] = "Gallery";
 }
 
-<div class="row">`
+<div class="row">
     <div class="col container">
-        <div class="col-10">
+        <div>
             @foreach (var item in Model.ImageList)
             {
-                <img class="float-left p-2" src="@item" height="150" />
+                <img class="float-left p-1" src="@item" height="150" />
             }
         </div>
     </div>
