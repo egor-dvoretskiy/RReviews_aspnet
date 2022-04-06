@@ -1,0 +1,38 @@
+﻿@page
+@model RReviews.Pages.Register.LoginModel
+@{
+}
+
+<h1>Register</h1>
+
+<h4>RegisterViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="Login" asp-route-returnUrl="LoginViewModel.ReturnUrl">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div>
+                <label asp-for="LoginViewModel.Email"></label><br />
+                <input asp-for="LoginViewModel.Email" />
+                <span asp-validation-for="LoginViewModel.Email"></span>
+            </div>
+            <div>
+                <label asp-for="LoginViewModel.Password"></label><br />
+                <input asp-for="LoginViewModel.Password" />
+                <span asp-validation-for="LoginViewModel.Password"></span>
+            </div>
+            <div>
+                <label asp-for="LoginViewModel.RememberMe"></label><br />
+                <input asp-for="LoginViewModel.RememberMe" />
+            </div>
+            <br/>
+            <div>
+                <input type="submit" value="Войти" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
