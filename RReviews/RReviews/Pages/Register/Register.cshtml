@@ -1,0 +1,49 @@
+﻿@page
+@model RReviews.Pages.Register.RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+
+<h4>RegisterViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RegisterViewModel.Email" class="control-label"></label>
+                <input asp-for="RegisterViewModel.Email" class="form-control" />
+                <span asp-validation-for="RegisterViewModel.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegisterViewModel.BirthDate" class="control-label"></label>
+                <input asp-for="RegisterViewModel.BirthDate" class="form-control" />
+                <span asp-validation-for="RegisterViewModel.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegisterViewModel.Password" class="control-label"></label>
+                <input asp-for="RegisterViewModel.Password" class="form-control" />
+                <span asp-validation-for="RegisterViewModel.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegisterViewModel.PasswordConfirm" class="control-label"></label>
+                <input asp-for="RegisterViewModel.PasswordConfirm" class="form-control" />
+                <span asp-validation-for="RegisterViewModel.PasswordConfirm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

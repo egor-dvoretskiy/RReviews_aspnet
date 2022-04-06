@@ -16,31 +16,31 @@
 
 /*---------> navigation menu <----------*/
 
-#navigation-menu {
+.head-menu {
     list-style: none;
     margin: 0;
     padding: 0;
     position: relative;
 }
 
-#navigation-menu li {
-    float: left;
-    background-color: #d3f8ff;
-}
+    .head-menu li {
+        float: left;
+        background-color: #d3f8ff;
+    }
 
-#navigation-menu li a {
-    text-decoration: none;
-    display: inline-block;
-    color: black;
-    text-transform: uppercase;
-    padding: 0 20px;
-    line-height: 50px;
-    /*border-radius: 15px;*/
-}
+        .head-menu li a {
+            text-decoration: none;
+            display: inline-block;
+            color: black;
+            text-transform: uppercase;
+            padding: 0 20px;
+            line-height: 50px;
+            /*border-radius: 15px;*/
+        }
 
-#navigation-menu li a:hover {
-    background-color: #ffa1d5;
-}
+            .head-menu li a:hover {
+                background-color: #ffa1d5;
+            }
 
 /*-------> RR <---------------*/
 
@@ -53,4 +53,10 @@
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
     display: inline-block;
+}
+
+/*------------auth-menu-------------*/
+
+#auth-menu {
+    float: right;
 }
