@@ -21,6 +21,7 @@ namespace RReviews.Pages.Reviews
         }
 
         public ReviewModel Review { get; set; }
+        public ImageModel Image { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,6 +31,7 @@ namespace RReviews.Pages.Reviews
             }
 
             Review = await _context.Review.FirstOrDefaultAsync(m => m.Id == id);
+            Image = await _context.Image.FirstOrDefaultAsync(m => Review.ImageKey == m.Name);
 
             if (Review == null)
             {

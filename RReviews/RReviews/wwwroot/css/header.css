@@ -1,9 +1,4 @@
-﻿a {
-    font-family: Comic Sans MS;
-    transition: 0.3s linear;
-}
-
-.navbar-brand {
+﻿.navbar-brand {
     text-transform: uppercase;
     line-height: 50px;
     padding-left: 15px;
@@ -16,19 +11,19 @@
 
 /*---------> navigation menu <----------*/
 
-.head-menu {
+#navigation-menu {
     list-style: none;
     margin: 0;
     padding: 0;
     position: relative;
 }
 
-    .head-menu li {
+    #navigation-menu li {
         float: left;
         background-color: #d3f8ff;
     }
 
-        .head-menu li a {
+        #navigation-menu li a {
             text-decoration: none;
             display: inline-block;
             color: black;
@@ -38,7 +33,7 @@
             /*border-radius: 15px;*/
         }
 
-            .head-menu li a:hover {
+            #navigation-menu li a:hover {
                 background-color: #ffa1d5;
             }
 
@@ -57,6 +52,45 @@
 
 /*------------auth-menu-------------*/
 
+
 #auth-menu {
-    float: right;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
 }
+
+    #auth-menu li {
+        float: left;
+        background-color: #d3f8ff;
+        vertical-align: central;
+    }
+
+        #auth-menu li.li-auth-before a {
+            text-decoration: none;
+            display: inline-block;
+            color: black;
+            text-transform: uppercase;
+            padding: 0 20px;
+            line-height: 50px;
+            /*border-radius: 15px;*/
+        }
+
+            #auth-menu li.li-auth-before a:hover {
+                background-color: #ffa1d5;
+            }
+
+        #auth-menu li.li-auth-after a, p {
+            text-decoration: none;
+            display: inline-block;
+            color: black;
+            line-height: 30px;
+            padding: 0 20px;
+            border: none;
+            /*border-radius: 15px;*/
+        }
+
+            #auth-menu li.li-auth-after a:hover {
+                background-color: #00ffff;
+            }
+

@@ -6,9 +6,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>Review</h4>
+<h4>Edit review#@Model.Review.Id</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -50,6 +48,7 @@
                 <input asp-for="Review.ReviewRating" class="form-control" />
                 <span asp-validation-for="Review.ReviewRating" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

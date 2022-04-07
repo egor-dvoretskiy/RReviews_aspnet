@@ -5,11 +5,11 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
 <div>
-    <h4>Review</h4>
+    <h4>Details of #@Model.Review.Id's review</h4>
     <hr />
+
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Review.Title)
@@ -52,6 +52,14 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Review.ReviewRating)
+        </dd>
+        <dt class="col-sm-2">
+            Image
+        </dt>
+        <dd class="col-sm-10">
+            <div class="img-container">                
+                <img src="@(Model.Image.RelativePath)"/>
+            </div>
         </dd>
     </dl>
 </div>

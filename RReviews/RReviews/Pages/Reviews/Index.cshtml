@@ -3,10 +3,11 @@
 @model RReviews.Pages.Reviews.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "List of reviews";
 }
 
-<h1>Index</h1>
+<h1>List of reviews</h1>
+<br/>
 
 <form>
     <p>
@@ -19,36 +20,62 @@
 </form>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create" class="btn btn-primary">Create New</a>
 </p>
 
-<div class="row row-cols-1 row-cols-md-2 g-1">
-    @foreach (var item in Model.Review)
-    {
-        <div class="col">
-            <div class="card">
-                <img src="@(Model.GetPathByItem(item))" class="card-img-top"/>
-                <div class="card-body">
-                    <h5 class="card-title placeholder-glow">@Html.DisplayFor(modelItem => item.Title)</h5>
-                    <p class="card-text placeholder-glow">@Html.DisplayFor(modelItem => item.ObjectName)</p>
-                    <p class="card-text placeholder-glow">@Html.DisplayFor(modelItem => item.ReviewTypeObject)</p>
-                    <p class="card-text placeholder-glow">@Html.DisplayFor(modelItem => item.TestingDate)</p>
-                    <p class="card-text placeholder-glow">@Html.DisplayFor(modelItem => item.Content)</p>
-                    <p class="card-text placeholder-glow">@Html.DisplayFor(modelItem => item.Cost)</p>
-                </div>
-                <div class="card-footer card-footer-custom">
-                    <div class="card-footer-block-1">
-                        <small class="text-muted placeholder-glow">
-                            Рейтинг: @Html.DisplayFor(modelItem => item.ReviewRating)
-                        </small>
-                    </div>
-                    <div class="card-footer-block-2">
-                        <button class="btn btn-info placeholder-glow">
-                            <a asp-page="./Details" asp-route-id="@item.Id">Посмотреть</a>
-                        </button>
-                    </div>                    
-                </div>
-             </div>
-        </div>
-    }  
-</div>
+<table class="table table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].TestingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].ReviewTypeObject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].ReviewRating)
+            </th>
+            <th>
+                Control
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Review)
+        {        
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    <a asp-area="" asp-page="./Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TestingDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReviewTypeObject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReviewRating)
+                </td>
+                <td>
+                    <a asp-area="" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-area="" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+  </tbody>
+</table>
