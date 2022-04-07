@@ -1,17 +1,5 @@
-﻿@page
-@model RReviews.Pages.Shared.SidebarPartialModel
-@{
-}
-
+﻿
 <div class="col text-center" id="sidebar">
     <h3>The Best of reviews.</h3>
-    @foreach(var item in Model.Review)
-    {
-        <div class="row">
-            <p>@item.Title</p>
-            <div class="img-container">
-                <img src="@(Model.GetPathByItem(item))"/>
-            </div>
-        </div>
-    }
+
 </div>
