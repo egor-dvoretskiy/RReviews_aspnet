@@ -1,0 +1,27 @@
+﻿@page
+@model RReviews.Pages.Register.CabinetModel
+@{
+    ViewData["Title"] = "Personal Cabinet";
+}
+
+<h1>Personal Cabinet</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">@Model.CurrentUser.UserName</label><br />
+            </div>
+            <br/>
+            <div class="form-group">
+                <input type="submit" value="Log out" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

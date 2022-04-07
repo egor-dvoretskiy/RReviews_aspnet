@@ -1,4 +1,5 @@
 ﻿
+
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" id="header-nav">
         <div class="container">
@@ -23,12 +24,24 @@
                     </li>
                 </ul>
                 <ul id="auth-menu" class="head-menu">
-                    <li>
-                        <a asp-area="" asp-page="/Register/Register">Register</a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Register/Login">Login</a>
-                    </li>
+                    @if(User.Identity.IsAuthenticated)
+                    {
+                        <li class="li-auth-after">                            
+                            <p>@User.Identity.Name</p> 
+                        </li>
+                        <li class="li-auth-after">
+                            <a asp-area="" asp-page="/Register/Cabinet" class="btn btn-primary">Personal info</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="li-auth-before">
+                            <a asp-area="" asp-page="/Register/Register">Register</a>
+                        </li>
+                        <li class="li-auth-before">
+                            <a asp-area="" asp-page="/Register/Login">Login</a>
+                        </li>
+                    }
                 </ul>
 
             </div>

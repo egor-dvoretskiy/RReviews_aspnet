@@ -1,3 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -17,34 +21,36 @@ namespace RReviews.Pages.Register
             _signInManager = signInManager;
         }
 
-        [HttpGet]
-        public IActionResult Login(string returnUrl = null)
+        public IActionResult OnGet()
         {
-            LoginViewModel.ReturnUrl = returnUrl;
+            var returnUrl = Request.Headers["Referer"].ToString();
+            ReturnUrl = returnUrl;
+
             return Page();
         }
 
         [BindProperty]
         public LoginViewModel LoginViewModel { get; set; }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public static string ReturnUrl { get; set; } = string.Empty;
+
+        public async Task<IActionResult> OnPostAsync()
         {
+            this.LoginViewModel.ReturnUrl = ReturnUrl;
+
             if (ModelState.IsValid)
             {
-                var result =
-                    await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                var result = await _signInManager.PasswordSignInAsync(LoginViewModel.Email, LoginViewModel.Password, LoginViewModel.RememberMe, false);
                 if (result.Succeeded)
                 {
                     // проверяем, принадлежит ли URL приложению
-                    if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+                    if (!string.IsNullOrEmpty(LoginViewModel.ReturnUrl) && Url.IsLocalUrl(LoginViewModel.ReturnUrl))
                     {
-                        return Redirect(model.ReturnUrl);
+                        return RedirectToPage("../Index");
                     }
                     else
                     {
-                        return RedirectToPage("../Index");
+                        return Redirect(LoginViewModel.ReturnUrl);
                     }
                 }
                 else
@@ -53,15 +59,6 @@ namespace RReviews.Pages.Register
                 }
             }
 
-            return RedirectToPage("../Index");
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Logout()
-        {
-            // удаляем аутентификационные куки
-            await _signInManager.SignOutAsync();
             return RedirectToPage("../Index");
         }
     }

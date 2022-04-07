@@ -40,7 +40,7 @@ namespace RReviews.Pages.Register
                 return Page();
             }
 
-            UserModel user = new UserModel { Email = RegisterViewModel.Email, BirthDate = RegisterViewModel.BirthDate, UserName =RegisterViewModel.Email };
+            UserModel user = new UserModel { Email = RegisterViewModel.Email, BirthDate = RegisterViewModel.BirthDate, UserName = RegisterViewModel.Email };
             var result = await _userManager.CreateAsync(user, RegisterViewModel.Password);
 
             if (result.Succeeded)

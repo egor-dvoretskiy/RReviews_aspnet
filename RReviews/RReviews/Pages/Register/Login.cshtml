@@ -1,33 +1,35 @@
 ﻿@page
 @model RReviews.Pages.Register.LoginModel
+
 @{
+    ViewData["Title"] = "Login";
 }
 
-<h1>Register</h1>
+<h1>Login</h1>
 
-<h4>RegisterViewModel</h4>
+<h4>LoginViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post" asp-action="Login" asp-route-returnUrl="LoginViewModel.ReturnUrl">
-            <div asp-validation-summary="ModelOnly"></div>
-            <div>
-                <label asp-for="LoginViewModel.Email"></label><br />
-                <input asp-for="LoginViewModel.Email" />
-                <span asp-validation-for="LoginViewModel.Email"></span>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LoginViewModel.Email" class="control-label"></label><br />
+                <input asp-for="LoginViewModel.Email" class="form-control"/>
+                <span asp-validation-for="LoginViewModel.Email" class="text-danger"></span>
             </div>
-            <div>
-                <label asp-for="LoginViewModel.Password"></label><br />
-                <input asp-for="LoginViewModel.Password" />
-                <span asp-validation-for="LoginViewModel.Password"></span>
+            <div class="form-group">
+                <label asp-for="LoginViewModel.Password" class="control-label"></label><br />
+                <input asp-for="LoginViewModel.Password" class="form-control"/>
+                <span asp-validation-for="LoginViewModel.Password" class="text-danger"></span>
             </div>
-            <div>
-                <label asp-for="LoginViewModel.RememberMe"></label><br />
-                <input asp-for="LoginViewModel.RememberMe" />
+            <div class="form-group">
+                <label asp-for="LoginViewModel.RememberMe" class="control-label"></label><br />
+                <input asp-for="LoginViewModel.RememberMe" class="form-check-input"/>
             </div>
             <br/>
-            <div>
-                <input type="submit" value="Войти" />
+            <div class="form-group">
+                <input type="submit" value="Войти" class="btn btn-primary"/>
             </div>
         </form>
     </div>
